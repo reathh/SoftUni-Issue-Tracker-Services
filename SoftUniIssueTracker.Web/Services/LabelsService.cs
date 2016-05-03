@@ -3,6 +3,7 @@ using System.Linq;
 using AutoMapper;
 using SIT.Data.Interfaces;
 using SIT.Models;
+using SIT.Web.Services.Interfaces;
 using SIT.Web.ViewModels.Label;
 
 namespace SIT.Web.Services

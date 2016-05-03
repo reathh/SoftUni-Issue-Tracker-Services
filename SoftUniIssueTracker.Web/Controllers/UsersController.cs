@@ -30,6 +30,14 @@ namespace SIT.Web.Controllers
         }
 
         [HttpGet]
+        [Route("")]
+        public IHttpActionResult GetByFilter(string filter)
+        {
+            var users = this.usersService.GetByFilter(filter);
+            return Ok(users);
+        }
+
+        [HttpGet]
         [Route("me")]
         public IHttpActionResult GetCurrentUser()
         {

@@ -143,7 +143,6 @@ namespace SIT.Web.Services
                     }
 
                     projectsQuery = projectsQuery.Where(p => p.ProjectLabels.Any(pl => pl.LabelId == label.Id));
-                    var projectsList = projectsQuery.ToList();
                 }
                 else
                 {

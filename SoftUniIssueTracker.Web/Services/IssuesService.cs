@@ -169,7 +169,8 @@ namespace SIT.Web.Services
             return new IssueWithPagesViewModel()
             {
                 TotalPages = totalPages,
-                Issues = mappedIssues
+                Issues = mappedIssues,
+                TotalCount = totalCount
             };
         }
 
@@ -258,7 +259,10 @@ namespace SIT.Web.Services
             var user = this.data.UserRepository.GetById(authorId);
             var projectIssuesLeads = this.data.ProjectRepository.GetById(issue.ProjectId)
                 .Select(p => p.Issues.Select(i => i.AssigneeId)).FirstOrDefault();
-            if (issue.Project.LeadId != user.Id && projectIssuesLeads != null && !projectIssuesLeads.Contains(user.Id))
+            if (issue.Project.LeadId != user.Id && 
+                projectIssuesLeads != null && 
+                !projectIssuesLeads.Contains(user.Id) &&
+                user.isAdmin == false)
             {
                 throw new InvalidOperationException(Constants.NotAssociatedWithIssue);
             }

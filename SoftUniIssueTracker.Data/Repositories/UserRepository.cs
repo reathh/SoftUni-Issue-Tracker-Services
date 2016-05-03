@@ -23,7 +23,7 @@ namespace SIT.Data.Repositories
 
         public IEnumerable<User> GetAll()
         {
-            return this.dbSet.ToList();
+            return this.dbSet.AsQueryable();
         }
 
         public virtual void Update(User entityToUpdate)
